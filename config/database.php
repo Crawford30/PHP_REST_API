@@ -46,11 +46,11 @@ class Database {
 
 			//if connection is succesfull, if false means no error and hence connection succesfull
 
-			//return  $this -> conn;
+			return  $this -> conn;
 
 				//PRINTING IN BROWSER
 
-			print_r($this -> conn);
+			//print_r($this -> conn);
 
 
 
@@ -64,13 +64,13 @@ class Database {
 }
 
 
-//testing if the class works
+// //testing if the class works
 
-$db = new Database();
+// $db = new Database();
 
-//calling the method
+// //calling the method
 
-$db -> connect();
+// $db -> connect();
 
 
 
