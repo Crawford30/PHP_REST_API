@@ -1,14 +1,11 @@
 <?php 
 
-//SETTING/INCLUDING HEADERS
 
+//SETTING/INCLUDING HEADERS
 
 header("Access-Control-Allow-Origin: *"); //Access from every site where the api is used. ie it allows all localhost, any domain or subdomains
 header("Content-type: application/json; Charset = UTF-8");  //Recieves the data in json format
 header("Access-Control-Allow-Methods: POST"); //Should only be accessible for the post request type ie method type
-
-
-
 
 
 
@@ -32,9 +29,6 @@ $db = new Database();  //Database in the class inside database.php
 //we call connect, still connect is a method inside database.php
 
 $connection = $db  -> connect();
-
-
-
 
 
 //create object for student
@@ -69,6 +63,8 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
 
 
 	//we call the create method, but it returns a bool value so we need to check, call cr
+	//we submit data
+//1. we initilaise the varriable, what we have define inside the student class: name, email and mobile
 
 	if ($student -> create_data()) {
 
@@ -106,47 +102,7 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
 
 
 
-
-
-
 	}
-
-
-	//we submit data
-//1. we initilaise the varriable, what we have define inside the student class: name, email and mobile
-
-
-	//we get the object, $student  to acccess the varraibale
-
-	// $student -> name = "Joel";
-
-	// $student -> email = "joel@gmail.com";
-
-	// $student -> mobile = "0777677777";
-
-
-
-	// //we gonna use variable, and set s offset
-
-	// $student -> name = $data -> name;
-
-	// $student -> email =  $data -> email;
-
-	// $student -> mobile =  $data -> mobile;
-
-
-	// //we call the create method, but it returns a bool value so we need to check, call cr
-
-	// if ($student -> create_data()) {
-
-	// 	echo "Student has been created";
-
-
-
-	// } else {
-
-	// 	echo "Failed to insert data";  
-	// }
 
 
 
@@ -181,16 +137,6 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
 		));
 
 }
-
-
-
-
-
-
-
-
-
-
 
 
 
