@@ -108,6 +108,39 @@ class Student {
 
 
 
+     }
+
+     //READ SINGLE STUDENT DATA
+
+     public function get_single_student() {
+
+     	$sql_query = "SELECT * FROM ".$this ->  table_name." WHERE id = ?"; //? means dynamic id we gonna pass by request of api
+
+
+     	//PREPARE STAEMENT
+
+     	$obj = $this -> conn -> prepare($sql_query);
+
+     	//FIND PLACEHOLDER
+     	$obj -> bind_param("i", $this -> id); //use i for integer id value ie bind paramwtere with the prepared statemnt
+
+
+     	//EXECUTE
+
+     	$obj -> execute();
+
+
+     	//GET THE RESULTS
+
+     	$data = $obj -> get_result();
+
+     	//WE RETURN THE DATA AND FETCH IT AS ASSOCAITIVE ARRAY
+
+     	return $data -> fetch_assoc();  //converting the data into assocaitive array
+
+
+
+
 
 
      }
