@@ -128,11 +128,11 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
 
 	// //we gonna use variable, and set s offset
 
-	// $student -> name = $data -> $name;
+	// $student -> name = $data -> name;
 
-	// $student -> email =  $data -> $email;
+	// $student -> email =  $data -> email;
 
-	// $student -> mobile =  $data -> $mobile;
+	// $student -> mobile =  $data -> mobile;
 
 
 	// //we call the create method, but it returns a bool value so we need to check, call cr
@@ -147,6 +147,8 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
 
 	// 	echo "Failed to insert data";  
 	// }
+
+
 
 
 	//ELSE FOR ALL FIELDS ARE REQUIRED
@@ -168,11 +170,7 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
 
 } else {
 
-//echo "Access Denied";
-
-
-
-
+		//echo "Access Denied";
 
 		http_response_code(503);  //status code, 503 means server unavaliable
 
