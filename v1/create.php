@@ -43,17 +43,16 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
 
 	//AFTER SETTING THE HEADER< WE ARE GOING TO RECEIVE THE DATA
 
-	$data  = json_decode(file_get_contents("php://input")); //getting data from the requested body parameter
+	$data  = json_decode(file_get_contents("php://input")); //getting data from the body section
 
-	//print_r($data); die;
+	
 
 	//checking the data
-
 
 	if (!empty($data -> name) && !empty($data -> email) && !empty($data -> mobile) ) {
 
 
-		//we gonna use variable, and set s offset
+	//we gonna use variable, and set s offset
 
 	$student -> name = $data -> name;
 
@@ -64,7 +63,7 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
 
 	//we call the create method, but it returns a bool value so we need to check, call cr
 	//we submit data
-//1. we initilaise the varriable, what we have define inside the student class: name, email and mobile
+	//1. we initilaise the varriable, what we have define inside the student class: name, email and mobile
 
 	if ($student -> create_data()) {
 
@@ -75,7 +74,9 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
 
 		http_response_code(200);  //status code, 200 means we are returning OK value
 
+
 		echo json_encode(array(
+
 			"status" => 1,
 
 			"message" =>  "Student has been created"
@@ -94,6 +95,7 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
 		http_response_code(500);  //status code, 500 means we some internal server error
 
 		echo json_encode(array(
+
 			"status" => 0,
 
 			"message" =>  "Failed to insert data"
@@ -115,6 +117,7 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
 		http_response_code(404);  //status code, 404 means page not found
 
 		echo json_encode(array(
+
 			"status" => 0,
 
 			"message" =>  "All values needed"
@@ -128,7 +131,7 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
 
 		//echo "Access Denied";
 
-		http_response_code(503);  //status code, 503 means server unavaliable
+		http_response_code(503);  //status code, 503 service unavaliable
 
 		echo json_encode(array(
 			"status" => 0,

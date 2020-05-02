@@ -75,14 +75,38 @@ class Student {
 
      	if ($obj -> execute()) { //executin the query
 
-
      		return true;
-
-
 
      	}
 
      	return false;
+
+
+     }
+
+
+
+
+
+     //METHOD TO READ ALL DATA FOR list-all.php
+
+     public function get_all_data() {
+
+     	//returns all the data from the database table
+
+     	$sql_query = "SELECT * FROM ".$this -> table_name;
+
+     	//EXECUTE THE QUERY
+
+     	$std_obj = $this -> conn -> prepare($sql_query); //prepare statement
+
+     	//execute query
+
+     	$std_obj  -> execute();
+
+     	return $std_obj ->  get_result();  //returns all the data
+
+
 
 
 
