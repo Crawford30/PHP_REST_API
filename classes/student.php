@@ -19,7 +19,7 @@ class Student {
 
      //Define our condtrct function, ie construtor
 
-     public function  _construct($db) {
+     public function  __construct($db) {
      	//$db is the connect object variable
 
 
@@ -40,16 +40,18 @@ class Student {
 
      	//we write the insert query, sql query to insert data
 
-     	$query = "INSERT INTO ".$this -> table_name." 
+     	$query = "INSERT INTO ".$this->table_name." 
      	SET name = ?,  email = ?, mobile = ?";
 
      	//prepare the sql query
-     	$obj = $this -> conn -> prepare($query);   //use prepare method and pass our query variable
+     	//$obj = $this -> conn -> prepare($query);   //use prepare method and pass our query variable
+
+     	$obj = $this -> conn -> prepare($query);
 
 
      	//Before inserting , we need to sanitize the values, name, email, mobile. sanitizs we remove some special charaters
 
-     	//sanitize input variables => removes the extra xters like some special symbols as well as if son=me tags avalioable in input values
+     	//sanitize input variables => removes the extra xters like some special symbols as well as if some tags avalioable in input values
 
      	//we use 2 php functions, one is html special character, and history tags
 
@@ -66,7 +68,7 @@ class Student {
      //ie $this -> name to  name = ?
 
 
-     	$obj -> bind_param("SSS", $this -> name, $this -> email, $this -> mobile); //emthod used to bind parameters  to the place holders, the sss means the name as a string  valeu, email as a string value and mobile as a string value. if it has interger we use i
+     	$obj -> bind_param("sss", $this -> name, $this -> email, $this -> mobile); //emthod used to bind parameters  to the place holders, the sss means the name as a string  valeu, email as a string value and mobile as a string value. if it has interger we use i
 
 
      	//WE need to execute, we check the obj
@@ -84,21 +86,13 @@ class Student {
 
 
 
-
-
-
      }
 
 
 
 
 
-
-
-
-
 }
-
 
 
 

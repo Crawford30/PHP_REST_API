@@ -50,7 +50,7 @@ class Database {
 
 				//PRINTING IN BROWSER
 
-			//print_r($this -> conn);
+			// print_r($this -> conn);
 
 
 
