@@ -10,6 +10,8 @@ class Student {
 	 public $email;
      public $mobile;
 
+     public $id; //used when updating a student
+
      //connection varaible and table name varaibele
 
      //mean while these two below are going tpo be internally used in this class.
@@ -137,6 +139,58 @@ class Student {
      	//WE RETURN THE DATA AND FETCH IT AS ASSOCAITIVE ARRAY
 
      	return $data -> fetch_assoc();  //converting the data into assocaitive array
+
+
+     }
+
+
+     //UPDATING STUDENT AND INFORMTION
+
+     public function update_student() {
+
+     	//QUERY
+
+     	//on updating we need to pass the table name
+
+     	$query_update = "UPDATE  tbl_students SET  name = ?, email = ?, mobile = ?  WHERE id = ?";  //using the id to update name, email, mobile number
+
+
+     	//PREPARE STATEMENT
+     	$query_object = $this -> conn -> prepare($query_update);
+
+     	//SANITIZE OUR INPUTS as we know from the post data, we gonna take the name, email,mobile and the id
+
+
+     	$this -> name = htmlspecialchars(strip_tags($this -> name)); 
+
+     	$this -> email = htmlspecialchars(strip_tags($this -> email)); 
+
+     	$this -> mobile = htmlspecialchars(strip_tags($this -> mobile)); 
+
+     	$this -> id = htmlspecialchars(strip_tags($this -> id)); 
+
+     	//BINDING PARAMETERS WITH THE QUERY
+
+     	$query_object -> bind_param("sssi", $this -> name, $this -> email, $this -> mobile, $this -> id); //should correspnd with the places  holder sssi
+
+     	//EXECUTE THE QUERY
+
+     	if ($query_object -> execute()) { //returns true or false value
+
+     		//if sucess, return true
+
+     		return true;
+
+
+
+     	}
+
+     	//else return false value
+
+     	return false;
+
+
+
 
 
 
