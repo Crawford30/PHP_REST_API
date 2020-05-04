@@ -19,7 +19,7 @@ class Student {
      private $table_name;
 
 
-     //Define our condtrct function, ie construtor
+     //Define our construct function, ie construtor
 
      public function  __construct($db) {
      	//$db is the connect object variable
@@ -181,25 +181,50 @@ class Student {
 
      		return true;
 
-
-
      	}
 
      	//else return false value
 
      	return false;
 
-
-
-
-
-
-
-
-
      }
 
 
+
+//DELETE STUDENT
+
+ public function delete_student() {
+
+ 	$delete_query = "DELETE from  ".$this -> table_name." WHERE  id = ?";
+
+ 	//PREPARE STATEMENT
+
+ 	$delete_obj = $this -> conn -> prepare($delete_query);
+
+ 	
+ 	//SANITIZE THE INPUTS
+ 	$this -> id = htmlspecialchars(strip_tags($this -> id)); //the id will be used in delete.php  
+
+
+ 	//BINDING THE PARAMETER WITH THE PLACE HOLDER,ie id
+
+ 	 $delete_obj -> bind_param("i", $this -> id); //attached the value to the placeholder
+
+ 	 //EXECUTE THE QUERY
+
+ 	 if ($delete_obj -> execute()) {
+
+ 	 	//if succesfully  executed
+
+ 	 	return true;
+ 	 }
+
+ 	 //if not successfully 
+
+ 	 return false;
+
+
+ }
 
 
 
